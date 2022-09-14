@@ -19,7 +19,6 @@ const Container = styled.section`
   width: 100%;
   height: 3rem;
   padding: 1rem;
-  margin: 0 1rem;
   background-color: #2cc0d3;
 `;
 

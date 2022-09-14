@@ -4,13 +4,16 @@ import { Routes, Route } from "react-router-dom";
 export default function NavigationRoutes() {
   return (
     <Routes>
-      <Route path="/" element={ "HomePage" } />
-      <Route path="/register" element={ "Registration" } />
-      <Route path="/customer/:id" element={ "Customer" } />
-      <Route path="/register/purchase" element={ "RegisterPurchase" } />
-      <Route path="/register/payment" element={ "RegisterPayment" } />
-      <Route path="/purchase/:id" element={ "PurchaseDetails" } />
-      <Route path="/payment/purchase/:id" element={ "PaymentDetails" } />
+      <Route path="/" element={ "" } />
+      <Route path="/register" element={ "" } />
+      <Route path="/customer/:id" element={ "" } />
+      <Route path="/register/purchase" element={ "" } />
+      <Route path="/register/payment" element={ "" } />
+      <Route path="/purchases" element={ "" } />
+      <Route path="/purchase/:id" element={ "" } />
+      <Route path="/payment/purchase/:id" element={ "" } />
+      <Route path="/treatments" element={ "" } />
+      <Route path="/treatment/:id" element={ "" } />
       <Route path="*" element={ "NotFound" } />
     </Routes>
   );
