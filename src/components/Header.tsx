@@ -16,7 +16,6 @@ const Container = styled.section`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
   height: 3rem;
   padding: 1rem;
   background-color: #2cc0d3;

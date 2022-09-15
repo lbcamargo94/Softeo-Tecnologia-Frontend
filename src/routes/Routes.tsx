@@ -1,10 +1,11 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
+import HomePage from '../pages/HomePage';
 
 export default function NavigationRoutes() {
   return (
     <Routes>
-      <Route path="/" element={ "" } />
+      <Route path="/" element={ <HomePage /> } />
       <Route path="/register" element={ "" } />
       <Route path="/customer/:id" element={ "" } />
       <Route path="/register/purchase" element={ "" } />
