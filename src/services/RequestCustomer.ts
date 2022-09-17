@@ -1,8 +1,9 @@
+import React from "react";
 import axios from "axios";
 import ICustomer from "../interfaces/ICustomer";
 
 const request = axios.create({
-  baseURL: process.env.SERVER_URL ?? "http://localhost:3001",
+  baseURL: process.env.SERVER_URL || "http://localhost:3001",
 });
 
 export const GetCustomer = async (path: string): Promise<[]> => {

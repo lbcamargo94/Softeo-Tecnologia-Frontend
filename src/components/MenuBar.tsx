@@ -7,13 +7,13 @@ export default function MenuBar() {
   return (
     <NavBar>
       <NavLink>
-        <Link onClick={() => navigate("/")}>Clientes</Link>
+        <Button onClick={() => navigate("/")}>Clientes</Button>
       </NavLink>
       <NavLink>
-        <Link onClick={() => navigate("/purchases")}>Contratos</Link>
+        <Button onClick={() => navigate("/purchases")}>Contratos</Button>
       </NavLink>
       <NavLink>
-        <Link onClick={() => navigate("/treatments")}>Tratamentos</Link>
+        <Button onClick={() => navigate("/treatments")}>Tratamentos</Button>
       </NavLink>
     </NavBar>
   );
@@ -31,7 +31,7 @@ const NavLink = styled.div`
   height: 100%;
 `;
 
-const Link = styled.button`
+const Button = styled.button`
   width: 100%;
   height: 100%;
   border: 1px outset;

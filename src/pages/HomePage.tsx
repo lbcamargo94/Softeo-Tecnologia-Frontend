@@ -1,9 +1,24 @@
 import React from "react";
+import { useEffect, useState } from "react";
+import ICustomer from "../interfaces/ICustomer";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { GetCustomer } from "../services/RequestCustomer";
 
 export default function HomePage() {
   let navigate = useNavigate();
+
+  const [customers, useCustomers] = useState<ICustomer[]>([]);
+  console.log(customers);
+  const [loading, useLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    async function requestCustomer() {
+      const resultCustomer = await GetCustomer("/");
+      useCustomers(resultCustomer);
+    }
+    requestCustomer();
+  }, [customers]);
 
   return (
     <Container>
@@ -12,9 +27,13 @@ export default function HomePage() {
         <Button onClick={() => navigate("/register")}>Novo Cliente</Button>
       </Box>
       <BoxCards>
-        <ProfileCard>
-          Profile Card
-        </ProfileCard>
+        {/* {
+          customers.map((element: ICustomer) => {
+          <ProfileCard key={element.id}>
+            <p>element.id</p>
+          </ProfileCard>;
+          })
+        } */}
       </BoxCards>
     </Container>
   );
@@ -24,8 +43,8 @@ const Container = styled.section`
   align-items: center;
   display: flex;
   flex-direction: column;
+  justify-content: start;
   height: 100%;
-  justify-content: space-between;
   width: 100%;
 `;
 
@@ -34,7 +53,7 @@ const Box = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 2rem;
+  margin: 2rem;
   width: 100%;
 `;
 
@@ -43,25 +62,38 @@ const Text = styled.h3`
 `;
 
 const Button = styled.h3`
-  margin: 1rem;
-  border: 1px outset;
-  border-radius: 0.5rem;
-  font-size: 16px;
-  padding: 0.5rem;
-  height: 2rem;
-  width: 7.5rem;
+  box-shadow: 0.125rem 0.125rem 0rem 0rem #000000;
   align-items: center;
-  text-align: center;
   background-color: #2cc0d3;
+  border-radius: 0.5rem;
+  border: 1px outset;
   color: #ffffff;
   display: flex;
+  font-size: 16px;
+  height: 2rem;
   justify-content: center;
+  margin: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+  width: 7.5rem;
 `;
 
 const BoxCards = styled.div`
-
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem;
 `;
 
 const ProfileCard = styled.div`
-  box-shadow: 0.5rem 0.5rem 3rem 0.5rem #000000;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  margin: 0.75rem;
+  height: 7.5rem;
+  width: 20rem;
+  box-shadow: 0.25rem 0.25rem 0.25rem 0.25rem #000000;
+  border-radius: 0.5rem;
 `;
