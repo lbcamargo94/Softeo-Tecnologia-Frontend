@@ -1,24 +1,29 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import CustomerCard from "../components/CustomerCard";
 import ICustomer from "../interfaces/ICustomer";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { GetCustomer } from "../services/RequestCustomer";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [customers, useCustomers] = useState<ICustomer[]>([]);
-  console.log(customers);
+  {
+    console.log(customers as ICustomer[]);
+  }
+
   const [loading, useLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function requestCustomer() {
+      useLoading(true);
       const resultCustomer = await GetCustomer("/");
       useCustomers(resultCustomer);
+      useLoading(false);
     }
     requestCustomer();
-  }, [customers]);
+  }, []);
 
   return (
     <Container>
@@ -27,13 +32,7 @@ export default function HomePage() {
         <Button onClick={() => navigate("/register")}>Novo Cliente</Button>
       </Box>
       <BoxCards>
-        {/* {
-          customers.map((element: ICustomer) => {
-          <ProfileCard key={element.id}>
-            <p>element.id</p>
-          </ProfileCard>;
-          })
-        } */}
+        {customers && customers.map((el) => <CustomerCard {...el} />)}
       </BoxCards>
     </Container>
   );
@@ -87,13 +86,13 @@ const BoxCards = styled.div`
   padding: 1rem;
 `;
 
-const ProfileCard = styled.div`
-  text-align: center;
-  align-items: center;
-  align-content: center;
-  margin: 0.75rem;
-  height: 7.5rem;
-  width: 20rem;
-  box-shadow: 0.25rem 0.25rem 0.25rem 0.25rem #000000;
-  border-radius: 0.5rem;
-`;
+// const ProfileCard = styled.div`
+//   text-align: center;
+//   align-items: center;
+//   align-content: center;
+//   margin: 0.75rem;
+//   height: 7.5rem;
+//   width: 20rem;
+//   box-shadow: 0.25rem 0.25rem 0.25rem 0.25rem #000000;
+//   border-radius: 0.5rem;
+// `;
