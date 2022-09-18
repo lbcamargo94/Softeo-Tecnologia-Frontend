@@ -2,6 +2,7 @@ import React from "react";
 import ICustomer from "../interfaces/ICustomer";
 import { useNavigate } from "react-router-dom";
 import {
+  CardBody,
   CardBox,
   CustomerCPF,
   CustomerEmail,
@@ -16,9 +17,11 @@ export default function CustomerCard({ id, fullName, email, cpf }: ICustomer) {
   return (
     <CardBox onClick={() => navigate(`/customer/${id}`)}>
       <CustomerImage src={profileImage} alt="profile_image" />
-      <CustomerName>{fullName}</CustomerName>
-      <CustomerEmail>{email}</CustomerEmail>
-      <CustomerCPF>{cpf}</CustomerCPF>
+      <CardBody>
+        <CustomerName>{fullName}</CustomerName>
+        <CustomerEmail>{email}</CustomerEmail>
+        <CustomerCPF>{cpf}</CustomerCPF>
+      </CardBody>
     </CardBox>
   );
 }

@@ -85,14 +85,3 @@ const BoxCards = styled.div`
   flex-wrap: wrap;
   padding: 1rem;
 `;
-
-// const ProfileCard = styled.div`
-//   text-align: center;
-//   align-items: center;
-//   align-content: center;
-//   margin: 0.75rem;
-//   height: 7.5rem;
-//   width: 20rem;
-//   box-shadow: 0.25rem 0.25rem 0.25rem 0.25rem #000000;
-//   border-radius: 0.5rem;
-// `;
