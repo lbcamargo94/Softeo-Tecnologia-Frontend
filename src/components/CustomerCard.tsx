@@ -8,7 +8,7 @@ import {
   CustomerEmail,
   CustomerImage,
   CustomerName,
-} from "../styles/CustomerCard";
+} from "../styles/components/CustomerCard";
 import profileImage from "../assets/images/profile_image.png";
 
 export default function CustomerCard({ id, fullName, email, cpf }: ICustomer) {
@@ -19,8 +19,8 @@ export default function CustomerCard({ id, fullName, email, cpf }: ICustomer) {
       <CustomerImage src={profileImage} alt="profile_image" />
       <CardBody>
         <CustomerName>{fullName}</CustomerName>
-        <CustomerEmail>{email}</CustomerEmail>
-        <CustomerCPF>{cpf}</CustomerCPF>
+        <CustomerEmail>Email: {email}</CustomerEmail>
+        <CustomerCPF>CPF: {cpf}</CustomerCPF>
       </CardBody>
     </CardBox>
   );
