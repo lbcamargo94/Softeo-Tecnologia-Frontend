@@ -14,6 +14,8 @@ export default function HomePage() {
   }
 
   const [loading, useLoading] = useState<boolean>(false);
+  console.log(loading);
+  
 
   useEffect(() => {
     async function requestCustomer() {
