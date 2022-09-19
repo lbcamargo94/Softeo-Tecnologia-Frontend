@@ -32,7 +32,7 @@ export default function HomePage() {
         <Button onClick={() => navigate("/register")}>Novo Cliente</Button>
       </Box>
       <BoxCards>
-        {customers && customers.map((el) => <CustomerCard {...el} />)}
+        {customers && customers.map((el) => <CustomerCard key={el.id} {...el} />)}
       </BoxCards>
     </Container>
   );
