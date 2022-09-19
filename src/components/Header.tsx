@@ -1,6 +1,6 @@
-import React from "react";
-import Logo from "../components/Logo";
-import { Container, Title } from "../styles/components/Header";
+import React from 'react'
+import Logo from '../components/Logo'
+import { Container, Title } from '../styles/components/Header'
 
 export default function Header() {
   return (
@@ -8,5 +8,5 @@ export default function Header() {
       <Logo />
       <Title>Odonto Customer Management</Title>
     </Container>
-  );
+  )
 }

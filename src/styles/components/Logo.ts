@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Box = styled.div`
   width: 3rem;
@@ -6,7 +6,7 @@ export const Box = styled.div`
   border: none;
   border-radius: 100%;
   margin: 0.5rem;
-`;
+`
 
 export const Image = styled.img`
   width: 100%;
@@ -14,4 +14,4 @@ export const Image = styled.img`
   overflow: hidden;
   border: none;
   border-radius: 100%;
-`;
+`

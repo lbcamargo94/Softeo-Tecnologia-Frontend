@@ -1,10 +1,10 @@
 interface ICustomer {
-  id: number;
-  fullName: string;
-  email: string;
-  phoneNumber: string;
-  cpf: string;
-  address: string;
+  id: number
+  fullName: string
+  email: string
+  phoneNumber: string
+  cpf: string
+  address: string
 }
 
-export default ICustomer;
+export default ICustomer
