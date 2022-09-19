@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const CardBox = styled.div`
-  /* align-content: center; */
   align-items: center;
   border: none;
   border-radius: 0.5rem;
@@ -18,16 +17,17 @@ export const CardBody = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 70%;
+  width: 80%;
 `;
 
 export const CustomerImage = styled.img`
   border-radius: 100%;
   border: none;
-  height: 5rem;
-  margin: 1rem;
+  height: 4rem;
+  margin: 0.25rem;
+  padding: 0.5rem;
   overflow: hidden;
-  width: 30%;
+  width: 20%;
 `;
 
 export const CustomerName = styled.h3`
