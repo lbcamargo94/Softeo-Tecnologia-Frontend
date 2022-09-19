@@ -1,7 +1,5 @@
 # Ignore artifacts:
-*.css
 .vscode
 build
 coverage
 node_modules
-public

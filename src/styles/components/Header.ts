@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.section`
   display: flex;
@@ -8,7 +8,7 @@ export const Container = styled.section`
   height: 3rem;
   padding: 1rem;
   background-color: #2cc0d3;
-`
+`;
 
 export const Title = styled.h1`
   text-align: center;
@@ -16,4 +16,4 @@ export const Title = styled.h1`
   max-width: 15rem;
   font-size: 1.5rem;
   color: #f5f5f5;
-`
+`;

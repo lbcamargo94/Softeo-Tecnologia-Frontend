@@ -1,11 +1,11 @@
 interface IPayment {
-  id: number
-  purchaseId: number
-  paymentValue: number
-  paymentType: string
-  paymantDate: string
-  dueDate: string
-  paid: boolean
+  id: number;
+  purchaseId: number;
+  paymentValue: number;
+  paymentType: string;
+  paymantDate: string;
+  dueDate: string;
+  paid: boolean;
 }
 
-export default IPayment
+export default IPayment;
