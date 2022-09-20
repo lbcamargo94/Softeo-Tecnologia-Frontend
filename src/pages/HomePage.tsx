@@ -9,9 +9,7 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   const [customers, useCustomers] = useState<ICustomer[]>([]);
-  {
-    console.log(customers as ICustomer[]);
-  }
+  console.log(customers);
 
   const [loading, useLoading] = useState<boolean>(false);
   console.log(loading);
