@@ -6,7 +6,7 @@ const request = axios.create({
 });
 
 export const GetCustomer = async (path: string): Promise<[]> => {
-  const { data } = await request.get(`${path}`);
+  const { data } = await request.get(`${path}`).then((data) => data.data);
   // console.log(data);
   return data;
 };
