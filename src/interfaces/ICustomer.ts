@@ -1,9 +1,9 @@
 interface ICustomer {
-  id: number;
+  id?: number;
   fullName: string;
   email: string;
-  phoneNumber: string;
   cpf: string;
+  phoneNumber: string;
   address: string;
 }
 

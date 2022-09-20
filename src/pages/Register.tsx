@@ -1,13 +1,36 @@
 import React, { useState } from "react";
 import { Button } from "../styles/pages/Register";
 import { Container, Forms, Input, Label, Title } from "../styles/pages/Register";
+import { CreateNewCustomer } from "../services/RequestCustomer";
+import { useNavigate } from "react-router-dom";
+import ICustomer from "../interfaces/ICustomer";
 
 export default function Register() {
+  const navigate = useNavigate();
+
   const [fullName, setFullName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [cpf, setCpf] = useState<string>("");
   const [address, setAddress] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+
+  const registerNewCustomer = async (
+    fullName: string,
+    email: string,
+    cpf: string,
+    address: string,
+    phoneNumber: string,
+  ) => {
+    const newCustomer: ICustomer = {
+      fullName,
+      email,
+      cpf,
+      phoneNumber,
+      address,
+    };
+    await CreateNewCustomer("/register", newCustomer);
+    navigate("/");
+  };
 
   return (
     <Container>
@@ -37,7 +60,7 @@ export default function Register() {
         <Input
           type="text"
           name="cpf"
-          placeholder="000.000.000-00"
+          placeholder="00000000000"
           onChange={({ target }) => setCpf(target.value)}
         />
       </Forms>
@@ -56,11 +79,13 @@ export default function Register() {
           type="text"
           id="phoneNumber"
           name="phoneNumber"
-          placeholder="(XX) X XXXX-XXXX"
+          placeholder="+55XXXXXXXXXXX"
           onChange={({ target }) => setPhoneNumber(target.value)}
         />
       </Forms>
-      <Button>Criar</Button>
+      <Button onClick={() => registerNewCustomer(fullName, email, cpf, address, phoneNumber)}>
+        Criar
+      </Button>
     </Container>
   );
 }
