@@ -11,6 +11,7 @@ export const CardBox = styled.div`
   margin: 0.75rem;
   text-align: center;
   width: 20rem;
+  cursor: pointer;
 `;
 
 export const CardBody = styled.div`

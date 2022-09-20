@@ -56,4 +56,5 @@ export const Button = styled.button`
   padding: 0.5rem;
   text-align: center;
   width: 7.5rem;
+  cursor: pointer;
 `;

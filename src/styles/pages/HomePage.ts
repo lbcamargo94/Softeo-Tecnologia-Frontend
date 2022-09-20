@@ -37,6 +37,7 @@ export const Button = styled.h3`
   padding: 0.5rem;
   text-align: center;
   width: 7.5rem;
+  cursor: pointer;
 `;
 
 export const BoxCards = styled.div`
