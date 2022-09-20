@@ -2,12 +2,12 @@ import axios from "axios";
 import ICustomer from "../interfaces/ICustomer";
 
 const request = axios.create({
-  baseURL: process.env.SERVER_URL,
+  baseURL: process.env.REACT_APP_SERVER_URL,
 });
 
 export const GetCustomer = async (path: string): Promise<[]> => {
-  const { data } = await request.get(`${path}`).then((data) => data.data);
-  // console.log(data);
+  const { data } = await request.get(`${path}`);
+  console.log(data);
   return data;
 };
 
