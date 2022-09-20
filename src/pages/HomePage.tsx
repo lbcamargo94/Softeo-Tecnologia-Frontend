@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CustomerCard from "../components/CustomerCard";
 import ICustomer from "../interfaces/ICustomer";
+import Loading from "../components/Loading";
 import { GetCustomer } from "../services/RequestCustomer";
 import { useNavigate } from "react-router-dom";
 import { Box, BoxCards, Button, Container, Text } from "../styles/pages/HomePage";
@@ -16,10 +17,10 @@ export default function HomePage() {
 
   useEffect(() => {
     async function requestCustomer() {
-      useLoading(true);
+      useLoading(false);
       const resultCustomer = await GetCustomer("/");
       useCustomers(resultCustomer);
-      useLoading(false);
+      useLoading(true);
     }
     requestCustomer();
   }, []);
@@ -31,7 +32,11 @@ export default function HomePage() {
         <Button onClick={() => navigate("/register")}>Novo Cliente</Button>
       </Box>
       <BoxCards>
-        {customers && customers.map((el) => <CustomerCard key={el.id} {...el} />)}
+        {loading === false ? (
+          <Loading />
+        ) : (
+          customers.map((el) => <CustomerCard key={el.id} {...el} />)
+        )}
       </BoxCards>
     </Container>
   );
