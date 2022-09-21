@@ -6,6 +6,6 @@ interface IPurchase {
   purchaseDate: Date;
   totalInstallments: number;
   totalValue: number;
-};
+}
 
 export default IPurchase;

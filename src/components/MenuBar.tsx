@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, NavBar, NavLink } from "../styles/components/MenuBar";
 
 export default function MenuBar() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <NavBar>
       <NavLink>

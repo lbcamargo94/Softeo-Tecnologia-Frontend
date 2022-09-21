@@ -12,7 +12,7 @@ import {
 import profileImage from "../assets/images/profile_image.png";
 
 export default function CustomerCard({ id, fullName, email, cpf }: ICustomer) {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <CardBox onClick={() => navigate(`/customer/${id}`)}>

@@ -10,10 +10,7 @@ export const GetPurchase = async (path: string): Promise<[]> => {
   return data;
 };
 
-export const CreateNewPurchase = async (
-  path: string,
-  body: IPurchase
-): Promise<[]> => {
+export const CreateNewPurchase = async (path: string, body: IPurchase): Promise<[]> => {
   const { data } = await request.post(`${path}`, body);
   return data;
 };

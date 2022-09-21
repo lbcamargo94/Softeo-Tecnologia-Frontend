@@ -10,10 +10,7 @@ export const requestGetMethod = async (path: string): Promise<[]> => {
   return data;
 };
 
-export const CreateNewCustomer = async (
-  path: string,
-  body: IPayment
-): Promise<[]> => {
+export const CreateNewCustomer = async (path: string, body: IPayment): Promise<[]> => {
   const { data } = await request.post(`${path}`, body);
   return data;
 };

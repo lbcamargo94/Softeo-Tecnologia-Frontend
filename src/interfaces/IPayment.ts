@@ -6,6 +6,6 @@ interface IPayment {
   paymantDate: string;
   dueDate: string;
   paid: boolean;
-};
+}
 
 export default IPayment;
