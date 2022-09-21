@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "../styles/pages/Register";
+import { Button, TextValidation } from "../styles/pages/Register";
 import { Container, Forms, Input, Label, Title } from "../styles/pages/Register";
 import { CreateNewCustomer } from "../services/RequestCustomer";
 import { useNavigate } from "react-router-dom";
@@ -46,9 +46,7 @@ export default function Register() {
   const validateFieldsForms = () => {
     const arrayValidations = [validFullName, validEmail, validCPF, validPhoneNumber];
     const isValidForms = arrayValidations.every((el) => el === true);
-    // console.log(isValidForms);
     isValidForms && setValidations(!isValidForms);
-    // console.log(validations);
   };
 
   useEffect(() => {
@@ -71,6 +69,11 @@ export default function Register() {
           }}
         />
       </Forms>
+      {!validFullName && (
+        <TextValidation>
+          * Nome Completo invalido, verigfique se está no padrão 'Aiton Lopes'.
+        </TextValidation>
+      )}
       <Forms>
         <Label htmlFor="email">Email:</Label>
         <Input
@@ -84,6 +87,11 @@ export default function Register() {
           }}
         />
       </Forms>
+      {!validEmail && (
+        <TextValidation>
+          * Email invalido, verifise esta no formato 'exemplo@exemplo.com'.
+        </TextValidation>
+      )}
       <Forms>
         <Label htmlFor="cpf">CPF:</Label>
         <Input
@@ -96,6 +104,11 @@ export default function Register() {
           }}
         />
       </Forms>
+      {!validCPF && (
+        <TextValidation>
+          * CPF invalido, verifise esta no formato 'XXX.XXX.XXX-XX', com apenas números.
+        </TextValidation>
+      )}
       <Forms>
         <Label htmlFor="address">Endereço:</Label>
         <Input
@@ -113,11 +126,17 @@ export default function Register() {
           name="phoneNumber"
           placeholder="Ex.: (99)9 9999-9999, Digite apenas números"
           onChange={({ target }) => {
-            setPhoneNumber(target.value);
+            setPhoneNumber(`+55${target.value}`);
             setValidPhoneNumber(phoneNumberValidation(`+55${target.value}`));
           }}
         />
       </Forms>
+      {!validPhoneNumber && (
+        <TextValidation>
+          * Telefone de Contato invalido, verifise esta no formato '(XX) X XXXX-XXXX', com apenas
+          números.
+        </TextValidation>
+      )}
       <Button
         disabled={validations}
         onClick={() => {

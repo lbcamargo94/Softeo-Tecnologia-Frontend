@@ -19,7 +19,6 @@ export const Forms = styled.form`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  height: 3.5rem;
   max-width: 25rem;
   width: 100%;
   padding: 1rem;
@@ -37,7 +36,7 @@ export const Input = styled.input`
   border: 1px solid lightgray;
   border-radius: 0.25rem;
   width: 100%;
-  height: 100%;
+  height: 3rem;
   text-indent: 1rem;
 `;
 
@@ -57,4 +56,10 @@ export const Button = styled.button`
   text-align: center;
   width: 7.5rem;
   cursor: pointer;
+`;
+
+export const TextValidation = styled.span`
+  text-align: center;
+  color: red;
+  margin-bottom: 0.5rem;
 `;
