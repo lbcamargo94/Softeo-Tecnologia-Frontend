@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../styles/pages/Register";
 import { Container, Forms, Input, Label, Title } from "../styles/pages/Register";
 import { CreateNewCustomer } from "../services/RequestCustomer";
 import { useNavigate } from "react-router-dom";
+import {
+  emailValidation,
+  nameValidation,
+  cpfValidaion,
+  phoneNumberValidation,
+} from "../helpers/Validations";
 import ICustomer from "../interfaces/ICustomer";
 
 export default function Register() {
@@ -11,8 +17,13 @@ export default function Register() {
   const [fullName, setFullName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [cpf, setCpf] = useState<string>("");
+  const [validEmail, setValidEmail] = useState<boolean>(false);
+  const [validFullName, setValidFullName] = useState<boolean>(false);
+  const [validCPF, setValidCPF] = useState<boolean>(false);
   const [address, setAddress] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [validPhoneNumber, setValidPhoneNumber] = useState<boolean>(false);
+  const [validations, setValidations] = useState<boolean>(true);
 
   const registerNewCustomer = async (
     fullName: string,
@@ -32,6 +43,18 @@ export default function Register() {
     navigate("/");
   };
 
+  const validateFieldsForms = () => {
+    const arrayValidations = [validFullName, validEmail, validCPF, validPhoneNumber];
+    const isValidForms = arrayValidations.every((el) => el === true);
+    // console.log(isValidForms);
+    isValidForms && setValidations(!isValidForms);
+    // console.log(validations);
+  };
+
+  useEffect(() => {
+    validateFieldsForms();
+  }, [validFullName, validEmail, validCPF, validPhoneNumber]);
+
   return (
     <Container>
       <Title>Formulário de cadastro para um novo cliente</Title>
@@ -42,7 +65,10 @@ export default function Register() {
           id="fullName"
           name="fullName"
           placeholder="Digite o nome e sobrenome"
-          onChange={({ target }) => setFullName(target.value)}
+          onChange={({ target }) => {
+            setFullName(target.value);
+            setValidFullName(nameValidation(target.value));
+          }}
         />
       </Forms>
       <Forms>
@@ -52,7 +78,10 @@ export default function Register() {
           id="email"
           name="email"
           placeholder="exemplo@email.com"
-          onChange={({ target }) => setEmail(target.value)}
+          onChange={({ target }) => {
+            setEmail(target.value);
+            setValidEmail(emailValidation(target.value));
+          }}
         />
       </Forms>
       <Forms>
@@ -60,8 +89,11 @@ export default function Register() {
         <Input
           type="text"
           name="cpf"
-          placeholder="00000000000"
-          onChange={({ target }) => setCpf(target.value)}
+          placeholder="Ex.: 000.000.000-00, Digite apenas os números"
+          onChange={({ target }) => {
+            setCpf(target.value);
+            setValidCPF(cpfValidaion(target.value));
+          }}
         />
       </Forms>
       <Forms>
@@ -79,11 +111,19 @@ export default function Register() {
           type="text"
           id="phoneNumber"
           name="phoneNumber"
-          placeholder="+55XXXXXXXXXXX"
-          onChange={({ target }) => setPhoneNumber(target.value)}
+          placeholder="Ex.: (99)9 9999-9999, Digite apenas números"
+          onChange={({ target }) => {
+            setPhoneNumber(target.value);
+            setValidPhoneNumber(phoneNumberValidation(`+55${target.value}`));
+          }}
         />
       </Forms>
-      <Button onClick={() => registerNewCustomer(fullName, email, cpf, address, phoneNumber)}>
+      <Button
+        disabled={validations}
+        onClick={() => {
+          registerNewCustomer(fullName, email, cpf, address, phoneNumber);
+        }}
+      >
         Criar
       </Button>
     </Container>
