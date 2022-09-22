@@ -1,8 +1,8 @@
 import axios from "axios";
-import IPurchase from "../interfaces/IPurchases";
+import IPurchase from "../interfaces/IPurchase";
 
 const request = axios.create({
-  baseURL: process.env.SERVER_URL ?? "http://localhost:3001",
+  baseURL: process.env.REACT_APP_SERVER_URL,
 });
 
 export const GetPurchase = async (path: string): Promise<[]> => {

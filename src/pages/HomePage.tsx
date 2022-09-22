@@ -9,18 +9,15 @@ import { Box, BoxCards, Button, Container, Text } from "../styles/pages/HomePage
 export default function HomePage() {
   const navigate = useNavigate();
 
-  const [customers, useCustomers] = useState<ICustomer[]>([]);
-  console.log(customers);
-
-  const [loading, useLoading] = useState<boolean>(false);
-  console.log(loading);
+  const [customers, setCustomers] = useState<ICustomer[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function requestCustomer() {
-      useLoading(false);
+      setLoading(false);
       const resultCustomer = await GetCustomer("/");
-      useCustomers(resultCustomer);
-      useLoading(true);
+      setCustomers(resultCustomer);
+      setLoading(true);
     }
     requestCustomer();
   }, []);
