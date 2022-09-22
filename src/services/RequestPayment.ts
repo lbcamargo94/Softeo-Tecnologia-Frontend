@@ -2,7 +2,7 @@ import axios from "axios";
 import IPayment from "../interfaces/IPayment";
 
 const request = axios.create({
-  baseURL: process.env.SERVER_URL ?? "http://localhost:3001",
+  baseURL: process.env.REACT_APP_SERVER_URL,
 });
 
 export const requestGetMethod = async (path: string): Promise<[]> => {

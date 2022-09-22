@@ -1,5 +1,5 @@
 interface IPayment {
-  id: number;
+  id?: number;
   purchaseId: number;
   paymentValue: number;
   paymentType: string;
